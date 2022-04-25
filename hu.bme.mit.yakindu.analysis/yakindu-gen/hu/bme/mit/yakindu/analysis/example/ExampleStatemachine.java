@@ -6,10 +6,10 @@ import hu.bme.mit.yakindu.analysis.ITimer;
 public class ExampleStatemachine implements IExampleStatemachine {
 	protected class SCInterfaceImpl implements SCInterface {
 	
-		private boolean start;
+		private boolean begin;
 		
-		public void raiseStart() {
-			start = true;
+		public void raiseBegin() {
+			begin = true;
 		}
 		
 		private boolean white;
@@ -24,14 +24,14 @@ public class ExampleStatemachine implements IExampleStatemachine {
 			black = true;
 		}
 		
-		private long whiteTime;
+		private long fishboneTime;
 		
-		public long getWhiteTime() {
-			return whiteTime;
+		public long getFishboneTime() {
+			return fishboneTime;
 		}
 		
-		public void setWhiteTime(long value) {
-			this.whiteTime = value;
+		public void setFishboneTime(long value) {
+			this.fishboneTime = value;
 		}
 		
 		private long blackTime;
@@ -45,7 +45,7 @@ public class ExampleStatemachine implements IExampleStatemachine {
 		}
 		
 		protected void clearEvents() {
-			start = false;
+			begin = false;
 			white = false;
 			black = false;
 		}
@@ -84,7 +84,7 @@ public class ExampleStatemachine implements IExampleStatemachine {
 		}
 		clearEvents();
 		clearOutEvents();
-		sCInterface.setWhiteTime(60);
+		sCInterface.setFishboneTime(60);
 		
 		sCInterface.setBlackTime(60);
 	}
@@ -203,8 +203,8 @@ public class ExampleStatemachine implements IExampleStatemachine {
 		return sCInterface;
 	}
 	
-	public void raiseStart() {
-		sCInterface.raiseStart();
+	public void raiseBegin() {
+		sCInterface.raiseBegin();
 	}
 	
 	public void raiseWhite() {
@@ -215,12 +215,12 @@ public class ExampleStatemachine implements IExampleStatemachine {
 		sCInterface.raiseBlack();
 	}
 	
-	public long getWhiteTime() {
-		return sCInterface.getWhiteTime();
+	public long getFishboneTime() {
+		return sCInterface.getFishboneTime();
 	}
 	
-	public void setWhiteTime(long value) {
-		sCInterface.setWhiteTime(value);
+	public void setFishboneTime(long value) {
+		sCInterface.setFishboneTime(value);
 	}
 	
 	public long getBlackTime() {
@@ -329,7 +329,7 @@ public class ExampleStatemachine implements IExampleStatemachine {
 		
 		if (try_transition) {
 			if (react()==false) {
-				if (sCInterface.start) {
+				if (sCInterface.begin) {
 					exitSequence_main_region_Init();
 					enterSequence_main_region_White_default();
 				} else {
@@ -374,7 +374,7 @@ public class ExampleStatemachine implements IExampleStatemachine {
 				} else {
 					if (timeEvents[1]) {
 						exitSequence_main_region_White();
-						sCInterface.setWhiteTime(sCInterface.getWhiteTime() - 1);
+						sCInterface.setFishboneTime(sCInterface.getFishboneTime() - 1);
 						
 						enterSequence_main_region_White_default();
 					} else {
