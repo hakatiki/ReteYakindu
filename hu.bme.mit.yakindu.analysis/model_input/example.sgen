@@ -1,0 +1,14 @@
+GeneratorModel for yakindu::java {
+	statechart example {
+		feature Outlet {
+			targetProject = "hu.bme.mit.yakindu.analysis"
+			targetFolder = "yakindu-gen"
+			libraryTargetFolder = "yakindu-gen"
+		}
+		feature GeneralFeatures {
+			InterfaceObserverSupport = false
+			RuntimeService = true
+			TimerService = true
+		}
+	}
+}
